@@ -1,0 +1,11 @@
+.interview-wrap.column
+    each item in interview
+        .interview
+            .interview-title.title
+                h2.title__text= item.title
+            .interview-main
+                .interview-photo
+                    img(src=item.imgUrl, alt="interview-photo")
+                .interview-info
+                    p.interview-description= item.description
+                    a(href='/interview/' + item.title).btn.main-btn Детальніше

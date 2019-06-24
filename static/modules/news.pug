@@ -1,0 +1,15 @@
+.news-wrap.column
+    .headline
+        span.headline__text Новини
+    each item in news
+        .news
+            .news-title.title
+                h2.title__text= item.title
+            .news-main
+                .news-photo
+                    img(src=item.imgUrl, alt="news-photo")
+                .news-info
+                    p.news-text= item.info.slice(0, 200) + '...'
+                    a(href='/news/' + item.title).btn.main-btn Детальніше
+
+        

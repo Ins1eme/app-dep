@@ -1,0 +1,23 @@
+extends ../layout/main.pug
+block content
+    section.main
+        .container
+            .article
+                a(href="/").button-back Назад
+                if news
+                    .article-left
+                        .article-photo
+                            img(src=news.imgUrl)
+                        if news.videoUrl
+                            iframe(src=news.videoUrl allowfullscreen).article-video
+                    .article-right
+                        h2.article-title= news.title
+                        .article-text
+                            each paragraph in news.info.split('<br />')
+                                p= paragraph
+                    if news.imgSubUrls
+                        .gallery
+                            each url in news.imgSubUrls.length
+                                a(data-fancybox="gallery" href=url).gallery-link
+                                    img(src=url).gallery-img
+            include ../modules/menu.pug

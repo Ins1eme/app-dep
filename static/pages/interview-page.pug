@@ -1,0 +1,25 @@
+extends ../layout/main.pug
+block content
+    section.main
+        .container
+            .article
+                a(href="/").button-back Назад
+                if interview
+                    .article-left
+                        .article-photo
+                            img(src=interview.imgUrl)
+                        if interview.videoUrl
+                            iframe(src=interview.videoUrl allowfullscreen).article-video
+                    .article-right
+                        h2.article-title= interview.title
+                        each paragraph in interview.info.split('<br />')
+                            p= paragraph
+                        if interview.author
+                            .author
+                                span.interview-author= interview.author
+                        if interview.imgSubUrls.length
+                            .gallery
+                                each url in interview.imgSubUrls
+                                    a(data-fancybox="gallery" href=url).gallery-link
+                                        img(src=url).gallery-img
+            include ../modules/menu.pug
